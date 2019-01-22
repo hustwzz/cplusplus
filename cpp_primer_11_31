@@ -1,0 +1,36 @@
+#include <iostream>
+#include <map>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main()
+{
+
+    multimap<string,string> imap =
+    {
+        {"a","1"},{"b","2"},{"c","3"},{"d","4"}
+    };
+
+    string aa = "b";
+    string bb = "2";
+
+    auto found = imap.find("b");
+    auto cnt  = imap.count("b");
+
+    while(cnt)
+    {
+        if(found->second == bb)
+        {
+            imap.erase(found);
+        }
+        --cnt;
+        ++found;
+    }
+
+    for(const auto& s:imap)
+    {
+        cout << s.first <<'\t'<< s.second <<endl;
+    }
+    return 0;
+}
